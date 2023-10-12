@@ -7,7 +7,23 @@ body {
 header > h1 {
     text-align: center;
 }
+.scoreboard-container {
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    display: flex;
+    justify-content:space-around;
+    
+}
+.scoreboard {
+    flex: 0 1 auto;
+    border: 5px solid #0d1321;
+    border-radius: 10px;
+    width: 150px;
+    
 
+}
 .cards-container {
     text-align: center;
     display: flex;
