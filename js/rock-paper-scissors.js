@@ -1,4 +1,12 @@
+let playerScoreDisplay = document.querySelector('#player-score');
+let computerScoreDisplay = document.querySelector('#computer-score');
+let cards = document.querySelectorAll('.card');
+let movesDisplay = document.querySelector('.moves');
+let resultsDisplay = document.querySelector('.results');
+let finalScoreDisplay = document.querySelector('.final-score');
 
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice(){
     let choice = Math.floor(Math.random() * 3);
@@ -15,6 +23,14 @@ function getComputerChoice(){
         return null;
     }
     
+}
+
+function getPlayerchoice(){
+    cards.forEach(item => {
+        item.addEventListener('click', event => {
+          game(event.currentTarget.id);
+        })
+    })
 }
 
 function playRound(playerSelection, computerSelection){
@@ -37,16 +53,18 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i<5;i++){
+function disableCards(){
+    cards.forEach( item => {
+        item.style.pointerEvents= 'none';
+    })
+}
+
+function game(playerSelection){
     
-        const playerSelection = prompt("Choose! rock, paper or scissors", "rock");
         const computerSelection = getComputerChoice();
-        console.log("You chose "+ playerSelection+ " and computer chose "+computerSelection);
+        movesDisplay.textContent = "You chose "+ playerSelection+ " and computer chose "+computerSelection+".";
         const roundResults = playRound(playerSelection, computerSelection);
-        console.log(roundResults);
+        resultsDisplay.textContent = roundResults;
         if(roundResults.includes("win!")){
             playerScore++;
         }
@@ -54,20 +72,24 @@ function game(){
             computerScore++;
         }
         
-        console.log("-------Score   "+playerScore+":"+computerScore+"   END ROUND-------");
+        playerScoreDisplay.textContent = playerScore;
+        computerScoreDisplay.textContent = computerScore;
+    
+    if((playerScore >= 5 && computerScore >= 5) && playerScore === computerScore){
+        finalScoreDisplay.textContent = "Final Score  "+playerScore+":"+computerScore+"  It's a tie!";
+        disableCards();
+    }
+    else if(playerScore >= 5 && playerScore > computerScore){
+        finalScoreDisplay.textContent = "Final Score  "+playerScore+":"+computerScore+"  You Win!";
+        disableCards();
+    }
+    else if(computerScore >= 5 && playerScore < computerScore){
+        finalScoreDisplay.textContent = "Final Score  "+playerScore+":"+computerScore+"  you Lose!";
+        disableCards();
     }
     
-    if(playerScore === computerScore){
-        console.log("Final Score  "+playerScore+":"+computerScore+"  It's a tie!");
-    }
-    else if(playerScore > computerScore){
-        console.log("Final Score  "+playerScore+":"+computerScore+"  You Win!");
-    }
-    else if(playerScore < computerScore){
-        console.log("Final Score  "+playerScore+":"+computerScore+"  you Lose!");
-    }
-    else{
-        console.log("I don't know how you'd get here.");
-    }
 }
+
+
+getPlayerchoice();
 
