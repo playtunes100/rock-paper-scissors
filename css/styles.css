@@ -1,0 +1,43 @@
+body {
+    font-family: 'Roboto', arial;
+    background-color: #e9edc9;
+    color: rgb(30, 34, 37);
+}
+
+header > h1 {
+    text-align: center;
+}
+
+.cards-container {
+    text-align: center;
+    display: flex;
+    gap: 2rem;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.card {
+    border: 5px solid #0d1321;
+    border-radius: 10px;
+    width: 100px;
+    flex: auto;
+}
+
+.card:hover {
+    
+    background-color: #c5c5c0;
+    border: 5px solid #1e53cf;
+    transform: translateY(-2px) translateX(-2px);
+    
+}
+
+.card img {
+    width:inherit;
+}
+
+footer {
+    position:fixed;
+    bottom:0;
+    text-align: center;
+    width: 100vw;
+}
