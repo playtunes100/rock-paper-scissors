@@ -51,6 +51,11 @@ header > h1 {
     width:inherit;
 }
 
+.results-container {
+    text-align: center;
+    margin: 4rem;
+}
+
 footer {
     position:fixed;
     bottom:0;
