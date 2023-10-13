@@ -25,7 +25,7 @@ function getComputerChoice(){
     
 }
 
-function getPlayerchoice(){
+function getPlayerChoice(){
     cards.forEach(item => {
         item.addEventListener('click', event => {
           game(event.currentTarget.id);
@@ -91,5 +91,5 @@ function game(playerSelection){
 }
 
 
-getPlayerchoice();
+getPlayerChoice();
 
